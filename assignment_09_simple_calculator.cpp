@@ -72,4 +72,130 @@
 #include <iomanip>
 #include <cmath>
 using namespace std;
+double add(double a, double b)
+{
+    return a + b;
+}
+
+double subtract(double a, double b)
+{
+    return a - b;
+}
+
+double multiply(double a, double b)
+{
+    return a * b;
+}
+
+double divide(double a, double b)
+{
+    if (b == 0)
+    {
+        return NAN;
+    }
+
+    return a / b;
+}
+
+double modulus(int a, int b)
+{
+    if (b == 0)
+    {
+        return NAN;
+    }
+
+    return a % b;
+}
+
+double exponent(double a, double b)
+{
+    return pow(a, b);
+}
+
+int main()
+{
+    int choice;
+
+    while (true)
+    {
+        cout << "\n============================" << endl;
+        cout << "     SIMPLE CALCULATOR" << endl;
+        cout << "============================" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Modulus" << endl;
+        cout << "6. Exponentiation" << endl;
+        cout << "7. Quit" << endl;
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice == 7)
+        {
+            cout << "Goodbye!" << endl;
+            break;
+        }
+
+        if (choice < 1 || choice > 7)
+        {
+            cout << "Error: Invalid menu choice." << endl;
+            continue;
+        }
+
+        double first, second;
+
+        cout << "Enter first number: ";
+        cin >> first;
+        cout << "Enter second number: ";
+        cin >> second;
+
+        cout << fixed << setprecision(2);
+
+        switch (choice)
+        {
+            case 1:
+                cout << "Result: " << add(first, second) << endl;
+                break;
+
+            case 2:
+                cout << "Result: " << subtract(first, second) << endl;
+                break;
+
+            case 3:
+                cout << "Result: " << multiply(first, second) << endl;
+                break;
+
+            case 4:
+            {
+                double result = divide(first, second);
+
+                if (isnan(result))
+                    cout << "Error: Cannot divide by zero." << endl;
+                else
+                    cout << "Result: " << result << endl;
+
+                break;
+            }
+
+            case 5:
+            {
+                double result = modulus((int)first, (int)second);
+
+                if (isnan(result))
+                    cout << "Error: Cannot divide by zero." << endl;
+                else
+                    cout << "Result: " << result << endl;
+
+                break;
+            }
+
+            case 6:
+                cout << "Result: " << exponent(first, second) << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
 
